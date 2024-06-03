@@ -1,0 +1,16 @@
+C:\Users\javie\source\repos\ProyectoFinalClases\bin\Debug\net8.0-windows\ProyectoFinalClases.exe
+C:\Users\javie\source\repos\ProyectoFinalClases\bin\Debug\net8.0-windows\ProyectoFinalClases.deps.json
+C:\Users\javie\source\repos\ProyectoFinalClases\bin\Debug\net8.0-windows\ProyectoFinalClases.runtimeconfig.json
+C:\Users\javie\source\repos\ProyectoFinalClases\bin\Debug\net8.0-windows\ProyectoFinalClases.dll
+C:\Users\javie\source\repos\ProyectoFinalClases\bin\Debug\net8.0-windows\ProyectoFinalClases.pdb
+C:\Users\javie\source\repos\ProyectoFinalClases\obj\Debug\net8.0-windows\ProyectoFinalClases.Form1.resources
+C:\Users\javie\source\repos\ProyectoFinalClases\obj\Debug\net8.0-windows\ProyectoFinalClases.csproj.GenerateResource.cache
+C:\Users\javie\source\repos\ProyectoFinalClases\obj\Debug\net8.0-windows\ProyectoFinalClases.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\javie\source\repos\ProyectoFinalClases\obj\Debug\net8.0-windows\ProyectoFinalClases.AssemblyInfoInputs.cache
+C:\Users\javie\source\repos\ProyectoFinalClases\obj\Debug\net8.0-windows\ProyectoFinalClases.AssemblyInfo.cs
+C:\Users\javie\source\repos\ProyectoFinalClases\obj\Debug\net8.0-windows\ProyectoFinalClases.csproj.CoreCompileInputs.cache
+C:\Users\javie\source\repos\ProyectoFinalClases\obj\Debug\net8.0-windows\ProyectoFinalClases.dll
+C:\Users\javie\source\repos\ProyectoFinalClases\obj\Debug\net8.0-windows\refint\ProyectoFinalClases.dll
+C:\Users\javie\source\repos\ProyectoFinalClases\obj\Debug\net8.0-windows\ProyectoFinalClases.pdb
+C:\Users\javie\source\repos\ProyectoFinalClases\obj\Debug\net8.0-windows\ProyectoFinalClases.genruntimeconfig.cache
+C:\Users\javie\source\repos\ProyectoFinalClases\obj\Debug\net8.0-windows\ref\ProyectoFinalClases.dll
