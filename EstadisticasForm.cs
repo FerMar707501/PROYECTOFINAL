@@ -21,40 +21,45 @@ namespace ProyectoFinalGasolineras
         }
         private void GenerarEstadisticas()
         {
-            var cierresDiarios = datosAbastecimientos.GroupBy(a => a.Fecha.Date)
-    .Select(g => new { Fecha = g.Key, TotalGalones = g.Sum(a => a.GalonesPorDispensar) });
+             var cierresDiarios = datosAbastecimientos.GroupBy(a => a.Fecha.Date)
+            .Select(g => new { Fecha = g.Key, TotalGalones = g.Sum(a => a.GalonesPorDispensar)
 
-            var prepagos = datosAbastecimientos.Where(a => a.Tipo == "Prepago");
+           var prepagos = datosAbastecimientos.Where(a => a.Tipo == "Prepago");
             var tanqueLleno = datosAbastecimientos.Where(a => a.Tipo == "TanqueLleno");
 
-            var bombaMasUtilizada = datosAbastecimientos.GroupBy(a => a.Bomba)
+           var bombaMasUtilizada = datosAbastecimientos.GroupBy(a => a.Bomba)
                 .OrderByDescending(g => g.Count()).FirstOrDefault();
             var bombaMenosUtilizada = datosAbastecimientos.GroupBy(a => a.Bomba)
                 .OrderBy(g => g.Count()).FirstOrDefault();
 
-            listViewEstadisticas.Items.Clear();
+           listBoxEstadisticas.Items.Clear();
 
-            listViewEstadisticas.Items.Add("Cierres de Caja Diarios:");
-            var cierresDiariosText = string.Join("\n", cierresDiarios.Select(cierre => $"{cierre.Fecha.ToShortDateString()}: {cierre.TotalGalones} galones"));
-            listViewEstadisticas.Items.Add(cierresDiariosText);
+            listBoxEstadisticas.Items.Add("Cierres de Caja Diarios:");
+            foreach (var cierre in cierresDiarios)
+            {
+                listBoxEstadisticas.Items.Add($"{cierre.Fecha.ToShortDateString()}: {cierre.TotalGalones} galones");
+            }
 
-            listViewEstadisticas.Items.Add("\nAbastecimientos Prepago:");
-            var prepagosText = string.Join("\n", prepagos.Select(prepago => $"Bomba {prepago.Bomba}: {prepago.GalonesPorDispensar} galones"));
-            listViewEstadisticas.Items.Add(prepagosText);
+            listBoxEstadisticas.Items.Add("\nAbastecimientos Prepago:");
+            foreach (var prepago in prepagos)
+            {
+                listBoxEstadisticas.Items.Add($"Bomba {prepago.Bomba}: {prepago.GalonesPorDispensar} galones");
+            }
 
-            listViewEstadisticas.Items.Add("\nAbastecimientos Tanque Lleno:");
-            var tanqueLlenoText = string.Join("\n", tanqueLleno.Select(tanque => $"Bomba {tanque.Bomba}: {tanque.GalonesPorDispensar} galones"));
-            listViewEstadisticas.Items.Add(tanqueLlenoText);
+            listBoxEstadisticas.Items.Add("\nAbastecimientos Tanque Lleno:");
+            foreach (var tanque in tanqueLleno)
+            {
+                listBoxEstadisticas.Items.Add($"Bomba {tanque.Bomba}: {tanque.GalonesPorDispensar} galones");
+            }
 
             if (bombaMasUtilizada != null)
             {
-                listViewEstadisticas.Items.Add($"\nBomba Más Utilizada: Bomba {bombaMasUtilizada.Key} - {bombaMasUtilizada.Count()} veces");
+                listBoxEstadisticas.Items.Add($"\nBomba Más Utilizada: Bomba {bombaMasUtilizada.Key} - {bombaMasUtilizada.Count()} veces");
             }
 
             if (bombaMenosUtilizada != null)
             {
-                listViewEstadisticas.Items.Add($"\nBomba Menos Utilizada: Bomba {bombaMenosUtilizada.Key} - {bombaMenosUtilizada.Count()} veces");
-            }
+                listBoxEstadisticas.Items.Add($"\nBomba Menos Utilizada: Bomba {bombaMenosUtilizada.Key} - {bombaMenosUtilizada.Count()} veces");
             
         }
 
