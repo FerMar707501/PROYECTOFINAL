@@ -22,8 +22,9 @@ namespace ProyectoFinalGasolineras
         string json;
 
         int numCliente = 0;
-        List<DatosCliente> lista = new List<DatosCliente>();
+         List<DatosCliente> lista = new List<DatosCliente>();
         List<Abastecimiento> datosPorMandar = new List<Abastecimiento>();
+        EstadisticasForm estadisticasForm;
         
 
         public Form1()
@@ -33,6 +34,7 @@ namespace ProyectoFinalGasolineras
             timer1.Interval = 1000;
             timer1.Tick += timer1_Tick;
             timer1.Start();
+            estadisticasForm = new EstadisticasForm(datosPorMandar);
         }
         private void Form1_Load(object sender, EventArgs e)
         {
@@ -74,6 +76,31 @@ namespace ProyectoFinalGasolineras
         {
             string data = Arduino.ReadLine(); // Leer los datos del puerto serial
             UpdateListBox(data);
+        }
+         private void ProcessData(string data)
+        {
+            // Parsear el JSON recibido del Arduino a un objeto Abastecimiento
+            var abastecimiento = JsonSerializer.Deserialize<Abastecimiento>(data);
+            datosPorMandar.Add(abastecimiento);
+
+            // Actualizar el JSON en el archivo
+            var json = JsonSerializer.Serialize(datosPorMandar);
+            File.WriteAllText(ruta, json);
+
+            // Actualizar la interfaz gráfica
+            if (InvokeRequired)
+            {
+                Invoke(new Action(() =>
+                {
+                    UpdateListBox(data);
+                    estadisticasForm.GenerarEstadisticas();
+                }));
+            }
+            else
+            {
+                UpdateListBox(data);
+                estadisticasForm.GenerarEstadisticas();
+            }
         }
         private void UpdateListBox(string data)
         {
@@ -133,7 +160,13 @@ namespace ProyectoFinalGasolineras
             prueba.Text = JsonParaArduino(jsonContent);
             // Enviar el contenido del archivo al Arduino a través del puerto serie
             Arduino.WriteLine(jsonContent);
-
         }
+        private void button1_Click(object sender, EventArgs e)
+        {
+            EstadisticasForm estadisticasForm = new EstadisticasForm(datosPorMandar);
+            estadisticasForm.Show();
+            
+
+        } 
     }
 }
